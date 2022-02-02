@@ -3,12 +3,20 @@
 namespace app\controllers\api\v1;
 
 use app\models\Books;
+//use app\controllers\api\v1\BaseApiController;
 use yii\rest\ActiveController;
-use yii\web\NotFoundHttpException;
 
 class BooksController extends ActiveController
 {
     public $modelClass = Books::class;
+
+    protected function verbs()
+    {
+        $verbs = parent::verbs();
+        $verbs['update'] = ['POST'];
+
+        return $verbs;
+    }
 
     public function actionList()
     {
@@ -21,13 +29,4 @@ class BooksController extends ActiveController
         $model->save();
     }
 
-
-    protected function findModel($id)
-    {
-        if (($model = Books::findOne(['id' => $id])) !== null) {
-            return $model;
-        }
-
-        throw new NotFoundHttpException('The requested page does not exist.');
-    }
 }

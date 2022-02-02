@@ -15,7 +15,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <table class="table">
+        <thead class="font-weight-bold">
+        <tr>
+            <td>#</td>
+            <td>Название книги</td>
+            <td>Авторы</td>
+        </tr>
+        </thead>
 
+        <tbody>
         <?php
         $count = 1;
         foreach ($data as $key => $book) { ?>
@@ -27,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php
         }
         ?>
+        </tbody>
     </table>
 
 </div>
